@@ -8,6 +8,8 @@ The technique developed here, MC3deconv, nicely overcomes these issues. The meth
 
 Email: akuhara @ eri.u-tokyo.ac.jp
 
+Please be aware that this is a forked repository.
+
 ## Terms of use
 
 * Please cite [Akuhara et al. (2019)](#Reference) when you publish an article or making presentation using this method.
