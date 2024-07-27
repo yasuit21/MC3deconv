@@ -131,9 +131,35 @@ subroutine output()
            stop
         end if
         
-        do i = 1, 158
-           write(io_mean, rec=i)-12345
-        end do
+		! [YS] Changed initialization 
+        
+		! do i = 1, 158
+        !    write(io_mean, rec=i)-12345
+        ! end do
+
+		do i = 1, 70
+			write(io_mean, rec=i) real(-12345.0)
+		end do
+		do i = 71, 105
+			write(io_mean, rec=i) int(-12345)
+		end do
+		do i = 106, 110
+			write(io_mean, rec=i) .false.
+		end do
+		do i = 111, 158
+			if (mod(i, 2) == 1) then
+				write(io_mean, rec=i) "-123"
+			else
+				write(io_mean, rec=i) "45.."
+			end if
+		end do
+		write(io_mean, rec = 75) 0 ! nzsec
+		if (icmp == 1) then
+			write(io_mean, rec=151) "R " ! KCMPNM
+		else
+			write(io_mean, rec=151) "Z " ! KCMPNM
+		end if
+
         write(io_mean, rec = 1) real(delta, kind(0e0))
         write(io_mean, rec = 6) real(-ntpre * delta, kind(0e0))
         write(io_mean, rec = 7) real((ngrn - ntpre) * delta, kind(0e0)) ! e
